@@ -34,7 +34,6 @@ export default class App extends Component {
 
     this.changeState = (state) => {
       this.setState(state);
-      global.console.log(this.state);
     };
   }
 

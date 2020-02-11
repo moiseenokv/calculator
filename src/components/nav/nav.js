@@ -6,7 +6,6 @@ export default class Nav extends Component {
     this.initData = ['Loan', 'Lease'];
 
     this.menuItemClick = ({ currentTarget }) => {
-      global.console.dir(currentTarget.classList.contains('lease'));
       const { loan, cb } = this.props;
 
       if ((loan && currentTarget.classList.contains('lease')) || (!loan && currentTarget.classList.contains('loan'))) {

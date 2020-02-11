@@ -27,14 +27,12 @@ export default class ButtonGroup extends Component {
     this.onButtonClickCreditScore = (ev) => {
       const { onClicked } = this.props;
       const currValue = 1 * ev.currentTarget.getAttribute('data-koef');
-      global.console.log(currValue);
       onClicked({ inputsCommonCreditScore: currValue });
     };
 
     this.constructCreditScore = () => {
       const { creditScore } = this.props.data;
       const { creditScoreVals } = this.init;
-      global.console.log(this.props.data);
       return creditScoreVals.map((item) => ((creditScore === item.k) ? <button onClick={this.onButtonClickCreditScore} data-koef={item.k} className="active">{item.value}</button> : <button onClick={this.onButtonClickCreditScore} data-koef={item.k}>{item.value}</button>));
     };
   }

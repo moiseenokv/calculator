@@ -1,3 +1,3 @@
-import ButtonGroup from './button-group';
+import InputGroup from './Input-group';
 
-export default ButtonGroup;
+export default InputGroup;
