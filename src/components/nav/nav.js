@@ -29,7 +29,8 @@ export default class Nav extends Component {
 
       return (
         <li className ={className}
-            onClick = { this.menuItemClick }>
+            onClick = { this.menuItemClick }
+            key={`nav-${item}`}>
           <span>Est. {item}</span>
           <div>{res[item.toLocaleLowerCase()]}</div>
         </li>

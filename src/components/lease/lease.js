@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import ButtonGroup from '../button-group';
 import InputGroup from '../input-group';
+import SelectGroup from '../select-group';
 
 
 export default class Lease extends Component {
   render() {
     const {
-      inputsLoanTerm, inputsCommonCreditScore, inputsCommonPostCode,
-      inputsCommonTradeIn, inputsCommonDownPayment, inputsLoanApr,
+      inputsLeaseTerm, inputsCommonCreditScore, inputsCommonPostCode,
+      inputsCommonTradeIn, inputsCommonDownPayment, inputsLeaseMileage,
     } = this.props.data;
     const { cb } = this.props;
     return (
       <div className="calcof lease">
-        <ButtonGroup title="Term (Months)" data={{ term: inputsLoanTerm, type: 'term' }} onClicked = {(st) => cb(st)}/>
-        <InputGroup title="Trade-in Value" data={{ value: inputsCommonTradeIn, label: '$' }} />
-        <InputGroup title="Down Payment" data={{ value: inputsCommonDownPayment, label: '$' }} />
-        <ButtonGroup title="Approx. Credit Score" data={{ creditScore: inputsCommonCreditScore, type: 'score' }} onClicked = {(st) => cb(st)}/>
-        <InputGroup title="Estimated APR" data={{ value: inputsLoanApr, label: '%' }} />
-        <InputGroup title="Post code" data={{ value: inputsCommonPostCode, label: '' }} />
+        <SelectGroup title="Term (Months)" data={ { value: inputsLeaseTerm, type: 'term', key: 'inputsLeaseTerm' }} onChanged = {(st) => cb(st)} />
+        <InputGroup title="Trade-in Value" data={{ value: inputsCommonTradeIn, label: '$', key: 'inputsCommonTradeIn' }} onChanged = {(st) => cb(st)} />
+        <InputGroup title="Down Payment" data={{ value: inputsCommonDownPayment, label: '$', key: 'inputsCommonDownPayment' }} onChanged = {(st) => cb(st)} />
+        <SelectGroup title="Approx. Credit Score" data={ { value: inputsCommonCreditScore, type: 'score', key: 'inputsCommonCreditScore' }} onChanged = {(st) => cb(st)} />
+        <SelectGroup title="Mileage" data={ { value: inputsLeaseMileage, type: 'mile', key: 'inputsLeaseMileage' }} onChanged = {(st) => cb(st)} />
+        <InputGroup title="Post code" data={{ value: inputsCommonPostCode, label: '', key: 'inputsCommonPostCode' }} onChanged = {(st) => cb(st)} />
       </div>
     );
   }

@@ -8,7 +8,7 @@ export default class InfoCard extends Component {
          <ul>
             <li>
                 <p>MSRP:</p>
-                <div class="usd">200000,34</div>
+                <div className="usd">200000,34</div>
             </li>
             <li>
                 <p>Vehicle:</p>
@@ -16,7 +16,7 @@ export default class InfoCard extends Component {
             </li>
             <li>
                 <p>Est. <span>Loan</span> Payment</p>
-                <div class="usd__alt">845,23</div>
+                <div className="usd__alt">845,23</div>
             </li>
             <li>
                 <p>Taxes:</p>
@@ -32,7 +32,7 @@ export default class InfoCard extends Component {
             </li>
             <li>
                 <p>Rating:</p>
-                <div class="star">5</div>
+                <div className="star">5</div>
             </li>
         </ul>
       </div>

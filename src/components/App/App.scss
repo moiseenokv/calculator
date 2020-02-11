@@ -175,6 +175,17 @@ nav {
             }
         }
     }
+
+    div.select-group {
+      @include flex(space-between, center, row);
+      margin: 10px 0;
+      select {
+          width: 115px;
+          text-align: center;
+          padding: 4px;
+          font-size: 18px;
+      }
+  }
 }
 
 

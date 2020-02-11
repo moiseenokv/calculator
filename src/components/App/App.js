@@ -17,7 +17,7 @@ export default class App extends Component {
       inputsCommonTradeIn: 0,
       inputsCommonDownPayment: 0,
       inputsCommonCreditScore: 1.2,
-      inputsCommonPostCode: null,
+      inputsCommonPostCode: 0,
       inputsCommonMsrp: 0,
       inputsLoanTerm: 24,
       inputsLoanApr: 0,
@@ -30,10 +30,12 @@ export default class App extends Component {
         loan: 10,
         lease: 10,
       },
+      test: 0,
     };
 
     this.changeState = (state) => {
       this.setState(state);
+      global.console.log(this.state);
     };
   }
 
@@ -60,11 +62,8 @@ export default class App extends Component {
                cb={this.changeState}
                res={{ loan: loanCalcResult, lease: leaseCalcResult }}
           />
-         {(activeLoanView) ? <Loan data={loanData}
-                                cb={this.changeState}
-                          /> : <Lease data={leaseData}
-                                      cb={this.changeState}
-                                />}
+         {(activeLoanView) ? <Loan data={loanData} cb={this.changeState} />
+           : <Lease data={leaseData} cb={this.changeState} />}
         </Calc>
         <InfoCard />
       </Wrapper>

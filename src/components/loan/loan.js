@@ -14,11 +14,11 @@ export default class Loan extends Component {
     return (
       <div className="calcof loan">
         <ButtonGroup title="Term (Months)" data={{ term: inputsLoanTerm, type: 'term' }} onClicked = {(st) => cb(st)}/>
-        <InputGroup title="Trade-in Value" data={{ value: inputsCommonTradeIn, label: '$' }} />
-        <InputGroup title="Down Payment" data={{ value: inputsCommonDownPayment, label: '$' }} />
+        <InputGroup title="Trade-in Value" data={{ value: inputsCommonTradeIn, label: '$', key: 'inputsCommonTradeIn' }} onChanged = {(st) => cb(st)} />
+        <InputGroup title="Down Payment" data={{ value: inputsCommonDownPayment, label: '$', key: 'inputsCommonDownPayment' }} onChanged = {(st) => cb(st)} />
         <ButtonGroup title="Approx. Credit Score" data={{ creditScore: inputsCommonCreditScore, type: 'score' }} onClicked = {(st) => cb(st)}/>
-        <InputGroup title="Estimated APR" data={{ value: inputsLoanApr, label: '%' }} />
-        <InputGroup title="Post code" data={{ value: inputsCommonPostCode, label: '' }} />
+        <InputGroup title="Estimated APR" data={{ value: inputsLoanApr, label: '%', key: 'inputsLoanApr' }} onChanged = {(st) => cb(st)} />
+        <InputGroup title="Post code" data={{ value: inputsCommonPostCode, label: '', key: 'inputsCommonPostCode' }} onChanged = {(st) => cb(st)} />
       </div>
     );
   }
