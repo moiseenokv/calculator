@@ -1,10 +1,12 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 
-export default class App extends Component {
+export default class Calc extends Component {
   render() {
     return (
-      <div>Hello World</div>
+      <div className = "calcs">
+           {this.props.children}
+      </div>
     );
   }
 }

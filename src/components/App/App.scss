@@ -1,0 +1,226 @@
+$border-color: grey;
+
+@mixin flex($hor, $vert, $flow) {
+    display: flex;
+    justify-content: $hor;
+    align-items: $vert;
+    flex-flow: $flow;
+  }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #555555;
+}
+
+.wrapper {
+    @include flex(space-around, none, row);
+    max-width:960px;
+    width:100%;
+    margin:10px auto;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.calcs {
+    max-width:550px;
+    width:100%;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: #fafafa;
+}
+
+nav {
+    @include flex(space-around, center, row);
+    ul{
+        @include flex(space-around, center, row);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width:100%
+    }
+
+    .menu__item {
+        @include flex(center, center, column);
+        width:50%;
+        margin: 0;
+        padding: 10px;
+        background: #fff;
+        cursor:pointer;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: 1px solid $border-color;
+
+        &.active {
+            background: #fafafa;
+            border-bottom: 1px solid #fafafa;
+            &:first-child {
+                border-right: 1px solid $border-color;
+                border-top-right-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+            &:last-child {
+                border-left: 1px solid $border-color;
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+            }
+        }
+
+        span {
+            color: #c2c2c2;
+            font-size: 12px;
+        }
+
+        div {
+            font-size: 30px;
+            margin: 5px 0 0 0;
+
+            &::before {
+                content: '$'
+            }
+            &::after {
+                content: '/mo';
+                font-size: 12px;
+                font-weight: 400;
+
+            }
+        }
+    }
+}
+
+.calcof {
+    padding: 10px 20px;
+    box-sizing: border-box;
+
+    div.button-group {
+        @include flex(left, center, column);
+        width:100%;
+
+        p {
+            @include flex(left, none, row);
+            width: 100%;
+            margin-bottom: 6px;
+        }
+
+        div {
+            @include flex(left, none, row);
+            width: 100%;
+            padding:0;
+            list-style: none;
+            margin:0;
+
+            button {
+                @include flex(center, center, row);
+                max-width: 106px;
+                width: 100%;
+                padding: 10px 0;
+                background: #fff;
+                border:none;
+                cursor: pointer;
+
+                &.active {
+                    background: #0067b9;
+                    color: #fff;
+                }
+
+                &:not(:first-child):not(:last-child){
+                    border-left: 1px solid $border-color;
+                    border-top: 1px solid $border-color;
+                    border-bottom: 1px solid $border-color;
+                }
+
+                &:first-child{
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                    border-left: 1px solid $border-color;
+                    border-top: 1px solid $border-color;
+                    border-bottom: 1px solid $border-color;
+                }
+
+                &:last-child{
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                    border: 1px solid $border-color;
+                }
+            }
+        }
+    }
+
+    div.input-group {
+        @include flex(space-between, center, row);
+        margin: 10px 0px;
+
+        div {
+            @include flex(center, none, row);
+
+            label {
+                border-bottom: 1px solid $border-color;
+                border-top: 1px solid $border-color;
+                border-left: 1px solid $border-color;
+                border-bottom-left-radius: 3px;
+                border-top-left-radius: 3px;
+                padding: 6px 9px 7px 9px;
+                font-size: 16px;
+                max-width: 26px;
+            }
+
+            input {
+                border-bottom-right-radius: 3px;
+                border-top-right-radius: 3px;
+                border: 1px solid $border-color;
+                text-align: right;
+                padding: 6px 7px;
+                font-size: 16px;
+                width: 74px;
+            }
+        }
+    }
+}
+
+
+.info__card {
+    max-width:368px;
+    width:100%;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+
+    ul {
+        list-style: none;
+        padding: 0 20px;
+    }
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $border-color;
+
+        div.usd {
+
+            &:before {
+                content: '$';
+            }
+        }
+
+        div.usd__alt {
+
+            &:before {
+                content: '$';
+            }
+
+            &:after {
+                content: '/mo';
+                font-size: 10px;
+            }
+        }
+
+        div.star {
+
+            &:after {
+                content: ' \272E';
+                font-size: 20px;
+            }
+        }
+    }
+}
+
