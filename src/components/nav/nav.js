@@ -10,12 +10,9 @@ export default class Nav extends Component {
       const { loan, cb } = this.props;
 
       if ((loan && currentTarget.classList.contains('lease')) || (!loan && currentTarget.classList.contains('loan'))) {
-        cb([{
-          views: {
-            activeLoan: !loan,
-            activeMenuLoan: !loan,
-          },
-        }]);
+        cb({
+          activeLoanView: !loan,
+        });
       }
     };
   }

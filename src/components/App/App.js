@@ -11,29 +11,20 @@ import Lease from '../lease';
 export default class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      views: {
-        activeLoan: false,
-        activeMenuLoan: false,
-      },
-      inputs: {
-        common: {
-          tradeIn: 0,
-          downPayment: 0,
-          creditScore: 0,
-          postCode: 0,
-          msrp: 0,
-        },
-        loan: {
-          term: 0,
-          apr: 0,
-        },
-        lease: {
-          term: 0,
-          mileage: 0,
-        },
-      },
+      activeLoanView: true,
+      activeMenuLoanView: true,
+      inputsCommonTradeIn: 0,
+      inputsCommonDownPayment: 0,
+      inputsCommonCreditScore: 1.2,
+      inputsCommonPostCode: null,
+      inputsCommonMsrp: 0,
+      inputsLoanTerm: 24,
+      inputsLoanApr: 0,
+      inputsLeaseTerm: 0,
+      inputsLeaseMileage: 0,
+      loanCalcResult: 10,
+      leaseCalcResult: 10,
       outputs: {},
       results: {
         loan: 10,
@@ -41,20 +32,40 @@ export default class App extends Component {
       },
     };
 
-    this.changeState = (arr) => {
-      arr.forEach((state) => {
-        this.setState(state);
-      });
+    this.changeState = (state) => {
+      this.setState(state);
+      global.console.log(this.state);
     };
   }
 
   render() {
-    const { activeLoan } = this.state.views;
+    const {
+      activeLoanView, loanCalcResult, leaseCalcResult, inputsCommonTradeIn,
+      inputsCommonDownPayment, inputsCommonCreditScore, inputsCommonPostCode,
+      inputsCommonMsrp, inputsLoanTerm, inputsLoanApr, inputsLeaseTerm,
+      inputsLeaseMileage,
+    } = this.state;
+    const commonData = {
+      inputsCommonTradeIn,
+      inputsCommonDownPayment,
+      inputsCommonCreditScore,
+      inputsCommonPostCode,
+      inputsCommonMsrp,
+    };
+    const loanData = { ...commonData, ...{ inputsLoanTerm, inputsLoanApr } };
+    const leaseData = { ...commonData, ...{ inputsLeaseTerm, inputsLeaseMileage } };
     return (
       <Wrapper>
         <Calc>
-          <Nav loan = {activeLoan} cb={this.changeState} res={this.state.results} />
-          {(activeLoan) ? <Loan /> : <Lease />}
+          <Nav loan = {activeLoanView}
+               cb={this.changeState}
+               res={{ loan: loanCalcResult, lease: leaseCalcResult }}
+          />
+         {(activeLoanView) ? <Loan data={loanData}
+                                cb={this.changeState}
+                          /> : <Lease data={leaseData}
+                                      cb={this.changeState}
+                                />}
         </Calc>
         <InfoCard />
       </Wrapper>
