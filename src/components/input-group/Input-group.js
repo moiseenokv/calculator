@@ -5,11 +5,25 @@ export default class InputGroup extends Component {
     super(props);
 
     this.onInputChange = (ev) => {
-      const { onChanged } = this.props;
-      const { key } = this.props.data;
-      const obj = {};
-      obj[key] = ev.target.value;
-      onChanged(obj);
+      try {
+        const { onChanged } = this.props;
+        const { key } = this.props.data;
+        const obj = {};
+        obj[key] = ev.target.value;
+        onChanged(obj);
+      } catch (error) {
+        global.alert(`smth went wrong: ${error}`);
+      }
+    };
+
+    this.onFocusEvent = ({ target }) => {
+      const el = target;
+      el.value = (el.value === 0 || el.value === '') ? '' : el.value;
+    };
+
+    this.onBlurEvent = ({ target }) => {
+      const el = target;
+      el.value = (el.value === 0 || el.value === '') ? 0 : el.value;
     };
   }
 
@@ -22,7 +36,7 @@ export default class InputGroup extends Component {
         <p>{title}</p>
         <div>
             {lbl}
-            <input type="text" value={value} onChange={this.onInputChange} />
+            <input type="number" value={value} onChange={this.onInputChange} onFocus={this.onFocusEvent} onBlur={this.onBlurEvent} />
         </div>
       </div>);
   }
