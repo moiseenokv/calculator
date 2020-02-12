@@ -17,7 +17,6 @@ export default class SelectGroup extends Component {
     this.onInputChange = (ev) => {
       const { onChanged } = this.props;
       const { key } = this.props.data;
-      // const { creditScoreVals } = this.init;
       const obj = {};
       obj[key] = 1 * ev.target.value;
       onChanged(obj);

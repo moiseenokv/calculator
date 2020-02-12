@@ -7,11 +7,14 @@ import Calc from '../calc';
 import Nav from '../nav';
 import Loan from '../loan';
 import Lease from '../lease';
+import Localstorage from '../../utils/localstorage';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.storage = new Localstorage('state');
+
+    this.initialState = {
       activeLoanView: true,
       activeMenuLoanView: true,
       inputsCommonTradeIn: 0,
@@ -33,11 +36,23 @@ export default class App extends Component {
       test: 0,
     };
 
+    this.state = (this.storage.restoreData() === false) ? this.initialState
+      : this.storage.restoreData();
+
     this.changeState = (state) => {
       this.setState(state);
       global.console.log(this.state);
     };
   }
+
+  componentDidMount() {
+    global.console.log('did mount');
+  }
+
+  componentDidUpdate() {
+    this.storage.saveData(this.state);
+  }
+
 
   render() {
     const {

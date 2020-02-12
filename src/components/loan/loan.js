@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import ButtonGroup from '../button-group';
 import InputGroup from '../input-group';
