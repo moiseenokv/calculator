@@ -150,6 +150,14 @@ nav {
         @include flex(space-between, center, row);
         margin: 10px 0px;
 
+        p {
+          span {
+            font-size: 10px;
+            color: red;
+            font-weight: bold;
+          }
+        }
+
         div {
             @include flex(center, none, row);
 

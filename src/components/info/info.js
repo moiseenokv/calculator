@@ -1,39 +1,35 @@
-/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 
 export default class InfoCard extends Component {
   render() {
+    const { data } = this.props;
+    const dataList = Object.keys(data).map((item) => {
+      let clsName = 'item';
+      if (item.toLocaleLowerCase() === 'msrp') {
+        clsName += ' usd';
+      } else if (item.toLocaleLowerCase() === 'loan' || item.toLocaleLowerCase() === 'lease') {
+        clsName += ' usd__alt';
+      } else if (item.toLocaleLowerCase() === 'rating') {
+        clsName += ' star';
+      }
+
+      let lbl = '';
+      if (item.toLocaleLowerCase() === 'loan' || item.toLocaleLowerCase() === 'lease') {
+        lbl = `Est. ${item} Payment:`;
+      } else {
+        lbl = `${item}:`;
+      }
+      return (
+        <li key = {`info-${item.toLocaleLowerCase()}`}>
+          <p>{lbl}</p>
+          <div className={clsName}>{data[item]}</div>
+        </li>
+      );
+    });
     return (
       <div className="info__card">
          <ul>
-            <li>
-                <p>MSRP:</p>
-                <div className="usd">200000,34</div>
-            </li>
-            <li>
-                <p>Vehicle:</p>
-                <div>Audi A6</div>
-            </li>
-            <li>
-                <p>Est. <span>Loan</span> Payment</p>
-                <div className="usd__alt">845,23</div>
-            </li>
-            <li>
-                <p>Taxes:</p>
-                <div>(22, 22, 11, 11, 66)</div>
-            </li>
-            <li>
-                <p>Dealer:</p>
-                <div>Some Dealer Ltd.</div>
-            </li>
-            <li>
-                <p>Phone:</p>
-                <div>+737618341</div>
-            </li>
-            <li>
-                <p>Rating:</p>
-                <div className="star">5</div>
-            </li>
+            {dataList}
         </ul>
       </div>
     );

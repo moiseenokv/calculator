@@ -21,7 +21,9 @@ export default class ButtonGroup extends Component {
     this.constructTerm = () => {
       const { term, type } = this.props.data;
       const { terms } = this.init;
-      return terms.map((item, index) => ((term === item) ? <button key={`but-${type}-${index + 10}`} onClick={this.onButtonClickTerm} className="active">{item}</button> : <button key={`but-${type}-${index + 10}`} onClick={this.onButtonClickTerm}>{item}</button>));
+      return terms.map((item, index) => ((term === item)
+        ? <button key={`but-${type}-${index + 10}`} onClick={this.onButtonClickTerm} onChange={this.onButtonClickTerm} className="active">{item}</button>
+        : <button key={`but-${type}-${index + 10}`} onClick={this.onButtonClickTerm} onChange={this.onButtonClickTerm}>{item}</button>));
     };
 
     this.onButtonClickCreditScore = (ev) => {
@@ -33,7 +35,9 @@ export default class ButtonGroup extends Component {
     this.constructCreditScore = () => {
       const { creditScore, type } = this.props.data;
       const { creditScoreVals } = this.init;
-      return creditScoreVals.map((item, index) => ((creditScore === item.k) ? <button key={`but-${type}-${index + 10}`} onClick={this.onButtonClickCreditScore} data-koef={item.k} className="active">{item.value}</button> : <button key={`but-${type}-${index + 10}`} onClick={this.onButtonClickCreditScore} data-koef={item.k}>{item.value}</button>));
+      return creditScoreVals.map((item, index) => ((creditScore === item.k)
+        ? <button key={`but-${type}-${index + 10}`} onClick={this.onButtonClickCreditScore} onChange={this.onButtonClickCreditScore} data-koef={item.k} className="active">{item.value}</button>
+        : <button key={`but-${type}-${index + 10}`} onClick={this.onButtonClickCreditScore} onChange={this.onButtonClickCreditScore} data-koef={item.k}>{item.value}</button>));
     };
   }
 
