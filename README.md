@@ -5,76 +5,53 @@
 
 #### Screenshots
 
-- [screen](https://prnt.sc/qkyb5m)
+- [screen](https://prnt.sc/r1fxer)
 
 
-#### Deadline - 08.01.2020 / 08.01.2020
+#### Deadline - 12.02.2020 / 12.02.2020
 
 ### Evaluation
 
-Basic (80)  + Normal (180) + Extra (160) + Impossible (30) - **+450**
+## Score criteria
 
-#### Basic scope 
+Basic (70) + Normal (120) + Extra (40) - +230
 
-Max - **+80**
-- [ ] Usage of Webpack and required project structure: **+10 points.** [**DONE**]
-- [ ] Custom canvas size (32x32 / 64x64 / 128x128) - **+10**
-- [ ] Tools
-  - [ ] Pen. Required size is 1 unit. (**+5**) [**DONE**]
-  - [ ] Pen. Other unit sizes (2, 3, 4) .(**+10**) [**DONE**]
-  - [ ] Color select (color picker) (**+5**) [**DONE**]
-  - [ ] Paint bucket (**+5**) [**DONE**]
-  - [ ] Eraser (**+10**) [**DONE**]
-  - [ ] Paint all pixels of the same color **+5** [**DONE**]
-  - [ ] Stroke (to draw straight lines) **+5** [**DONE**]
+#### Basic scope
+Max - **+70**
 
-- Unit tests
-  - [ ] Setup Jest + cover couple functions with at least 2 tests (utilities / pure functions for example) **+15** [**DONE**]
+ - Loan calculator (+20) [**DONE**]
+ - Lease calculator (+20) [**DONE**]
+ - Info card (+10) [**DONE**]
+ - Calculation logic (monthly payment and taxes are updated properly) (+20) [**DONE**]
 
-### Normal scope 
+#### Normal scope
+Max - **+120**
 
-Max - **+180**
-- [ ] Landing Page is presented will all needed information: **+20 points.** [**DONE**]
-- [ ] `Frames` functionality
-  - add frame - **+15**[**DONE**]
-  - delete a frame - **+15**[**DONE**]
-  - drag & drop (move) frame - **+20**[**DONE**]
-  - duplicate frame - **+20**[**DONE**]
-- [ ] `Preview` functionality
-  - Ability to animate the created frames  - **+20**[**DONE**]
-  - Ability to change FPS rate from 1 to 24 per second - **20**[**DONE**]
-  - Ability to run the animation in Full screen mode - **+10**[**DONE**]
-- Keyboard shotcuts
-  - [ ] All actions should be available via keyboard shortcuts **+10**[**DONE**]
-  - [ ] Modal window to change keyboard shortcuts **+10**
-- [ ] Save user session in localstorage **+10**[**DONE**]
-- Unit tests
-  - [ ] write 20 unit tests for utils functions and ui components **+10**
+ - Spinner (+10)
+ - Data shares between loan and lease calculator (+20) [**DONE**]
+ - Data loads and calculations does asynchronously (result of the function that loads data about dealer and car is Promise. result of the function that calculates taxes and monthly payment is Promise) (+10) [**DONE**]
+ - Hoc, children or render pop is used (+20) [**DONE**]
+ - Validation for Down Payment and Trade-In (validation message is shown, new calculation haven't run: monthly payment remains the same) (+40) [**DONE**]
+ - Inputs display their values with currency sign (if applicable. Ex.: trade-In, Down Payment) (+20) [**DONE**]
 
+#### Extra (additional) scope
+Max - **+40**
 
-### Extra (additional) scope
-Max - **+160**
-- [ ] Login with one of the oAuth providers - Google / Facebook / VK / Twitter (**+20**)
-- Export the final result
-    - [ ] As .apng to file system **+15**
-    - [ ] As .gif to file system **+15**
-- Unit tests
-  - [ ] Achieve good coverage  **+1** for every percent of coverage (max - **+100**)
-    - it needs to measure number of covered lines for all js app files in the project
-  - [ ] Achieve at least 40% coverage (for utilitiess / pure functions) **+10**
+ - Keyboard support (+20) [**DONE**]
+ - Session storage (data saves to storage and restores after page reload). (+20) [**DONE**]
 
-### Impossible scope
-
-Max - **+30**
-
-- Unit tests
-  - [ ] Achieve at least 80% coverage (for utilitiess / pure functions & ui components) **+30**
-
-
-### Fines
-- [ ] General stage 2 requirements violation or inappropriate quality of the code: **-50 points** and more depending on the decision of the mentor. 
-- [ ] **-10** very bad / ugly design of landing page / app itself
-- [ ] **-30** if there is no a worklog.
-- [ ] **-30** big & "spaghetti style" modules
-- [ ] **-20** eslint is not configured or there is a lot of errors
-- [ ] **-20** magic number
+## Cross-check requirements
+ - Flow: https://github.com/rolling-scopes-school/docs/blob/master/docs/cross-check-flow.md
+ 
+    Example 1: Validation for Down Payment and Trade-In
+      - validation message is shown, new calculation haven't run - 40
+      - validation message is shown && new calculation is run or validation message is not shown && new calculation haven't run - 20
+      - validation hasn't implemented - 0
+  
+  
+ - Fines:
+    - -50 and more - General stage 2 requirements violation or inappropriate quality of the code (depending on the decision of the checking)
+    - -10 there are errors in web console
+    - -50 there are errors preventing app from normal work
+    - -10 uses API key from description, not your own
+    - -20 lease and loan calculators look the same
