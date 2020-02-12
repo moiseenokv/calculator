@@ -24,7 +24,15 @@ module.exports = {
         exclude: /node_module/,
         use: 'babel-loader',
       },
-
+      {
+        type: 'javascript/auto',
+        test: /\.json$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].json',
+          outputPath: 'assets/data',
+        },
+      },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [

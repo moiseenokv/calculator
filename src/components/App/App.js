@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
+import '../../assets/data/vendorData.json';
 import './App.scss';
 import Wrapper from '../wrapper';
 import InfoCard from '../info';
@@ -8,7 +9,7 @@ import Nav from '../nav';
 import Loan from '../loan';
 import Lease from '../lease';
 import Localstorage from '../../utils/localstorage';
-import vendorData from '../../assets/data/vendorData.json';
+
 
 export default class App extends Component {
   constructor(props) {
@@ -60,11 +61,27 @@ export default class App extends Component {
           }));
       }
     };
+
+    this.getDealerData = () => {
+      Promise.resolve(fetch('../../assets/data/vendorData.json')
+        .then((data) => data.json())
+        .then((result) => {
+          const vendorObjectData = {
+            msrp: result.msrp,
+            dealerName: result.dealerName,
+            dealerPhone: result.dealerPhone,
+            dealerRating: result.dealerRating,
+            vehicleName: result.vehicle,
+          };
+          this.setState(vendorObjectData);
+        }));
+    };
   }
 
   componentDidMount() {
-    global.console.log(vendorData);
     this.getPostal();
+    this.getDealerData();
+    global.console.log(this.state);
   }
 
   componentDidUpdate() {
