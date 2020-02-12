@@ -30,7 +30,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].json',
-          outputPath: 'assets/data',
+          outputPath: './assets/data',
         },
       },
       {
@@ -100,7 +100,7 @@ module.exports = {
       favicon: path.resolve(__dirname, 'src/assets/img/favicon.ico'),
     }),
     new MiniCssExtractPlugin({
-      filename: './style.css',
+      filename: 'style.css',
     }),
   ],
   mode: 'development',

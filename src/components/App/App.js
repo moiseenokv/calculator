@@ -1,6 +1,5 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
-import '../../assets/data/vendorData.json';
 import './App.scss';
 import Wrapper from '../wrapper';
 import InfoCard from '../info';
@@ -62,7 +61,7 @@ export default class App extends Component {
     };
 
     this.getDealerData = () => {
-      Promise.resolve(fetch('../../assets/data/vendorData.json')
+      Promise.resolve(fetch('https://moiseenokv.github.io/projects/data/dataVendor.json')
         .then((data) => data.json())
         .then((result) => {
           const vendorObjectData = {
@@ -125,8 +124,6 @@ export default class App extends Component {
             loanCalcResult: loanCalc.toFixed(0), leaseCalcResult: leaseCalc.toFixed(0),
           },
         );
-
-        global.console.log(loanCalc.toFixed(0), leaseCalc.toFixed(0));
       }
     };
   }

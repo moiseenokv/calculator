@@ -4,7 +4,7 @@ export default class SelectGroup extends Component {
   constructor(props) {
     super(props);
     this.init = {
-      terms: [12, 24, 36, 48, 72, 84],
+      terms: [24, 36, 48],
       creditScoreVals: [
         { value: 'less-639', k: 1.2 },
         { value: '640-699', k: 1.05 },
